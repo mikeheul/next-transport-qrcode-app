@@ -42,7 +42,7 @@ export default function TicketValidator() {
             <h1 className="text-3xl font-bold mb-4 text-center text-white">Contrôleur de billets</h1>
 
             {/* Container with fixed dimensions for md, lg, xl and full width for mobile */}
-            <div className="relative flex justify-center w-full max-h-[500px] sm:w-[500px] aspect-[1/1] rounded-lg">
+            <div className="relative flex justify-center w-full max-h-[500px] sm:w-[500px] aspect-[1/1]">
                 <QrScanner
                     delay={300}
                     onError={handleError}
@@ -58,7 +58,7 @@ export default function TicketValidator() {
 
                 {/* Overlay for validation result */}
                 {validationResult && (
-                    <div className="absolute top-0 left-0 inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-lg">
+                    <div className="absolute top-0 left-0 inset-0 flex items-center justify-center bg-black bg-opacity-50">
                         <div className="flex items-center text-white p-4 rounded-lg shadow-lg">
                             {isValid ? (
                                 <CheckCircle className="text-green-500 w-8 h-8 mr-2" />
