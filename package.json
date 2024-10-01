@@ -30,5 +30,10 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5"
+  },
+  "eslintConfig": {
+    "rules": {
+        "no-var": 0
+    }
   }
 }
