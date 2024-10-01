@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -16,9 +16,7 @@ export default function TicketValidator() {
     // Cette fonction gère la lecture des données du QR code
     const handleScan = async (data: { text: string } | null) => {
         if (data && data.text) {
-
             setQrCodeData(data.text);
-
             const parsedData = JSON.parse(data.text);
             
             // Envoi des données scannées au serveur pour validation
@@ -52,8 +50,8 @@ export default function TicketValidator() {
     };
 
     return (
-        <div className="container mx-auto py-8">
-            <h1 className="text-2xl font-bold">Contrôleur de billets</h1>
+        <div className="bg-white shadow-md rounded-lg p-6">
+            <h1 className="text-3xl font-bold mb-4 text-center">Contrôleur de billets</h1>
 
             {/* Scanner QR */}
             <QrScanner
@@ -64,22 +62,24 @@ export default function TicketValidator() {
                 facingMode={isBackCamera ? 'front' : 'rear'}
             />
 
-            <button 
-                onClick={toggleCamera} 
-                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-            >
+            <div className="flex justify-center mt-4">
+                <button 
+                    onClick={toggleCamera} 
+                    className="bg-blue-500 text-white py-2 px-4 rounded transition duration-200 hover:bg-blue-600"
+                >
                     {isBackCamera ? 'Utiliser la caméra frontale' : 'Utiliser la caméra arrière'}
-            </button>
+                </button>
+            </div>
 
-            {qrCodeData && <p className="mt-4">Données scannées : {qrCodeData}</p>}
+            {qrCodeData && <p className="mt-4 text-center">Données scannées : {qrCodeData}</p>}
             {validationResult && (
-                <div className="mt-4 flex items-center">
+                <div className="mt-4 flex items-center justify-center">
                     {isValid ? (
                         <CheckCircle className="text-green-500 w-6 h-6 mr-2" />
                     ) : (
                         <XCircle className="text-red-500 w-6 h-6 mr-2" />
                     )}
-                    <p>Résultat : {validationResult}</p>
+                    <p className="text-lg">{validationResult}</p>
                 </div>
             )}
         </div>
