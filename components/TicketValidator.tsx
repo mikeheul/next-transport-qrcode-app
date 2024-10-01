@@ -56,6 +56,14 @@ export default function TicketValidator() {
                     }}
                 />
 
+                {/* Overlay for edges of the scanner */}
+                <div className="absolute inset-0">
+                    <div className="absolute top-0 left-0 h-1 w-full bg-red-500" /> {/* Top edge */}
+                    <div className="absolute bottom-0 left-0 h-1 w-full bg-red-500" /> {/* Bottom edge */}
+                    <div className="absolute top-0 left-0 h-full w-1 bg-red-500" /> {/* Left edge */}
+                    <div className="absolute top-0 right-0 h-full w-1 bg-red-500" /> {/* Right edge */}
+                </div>
+
                 {/* Overlay for validation result */}
                 {validationResult && (
                     <div className="absolute top-0 left-0 inset-0 flex items-center justify-center bg-black bg-opacity-50">
