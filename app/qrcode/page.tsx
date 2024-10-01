@@ -85,7 +85,7 @@ const TicketPage = () => {
 
                         {/* Ticket Design - Footer */}
                         <div className="mt-6 border-t pt-4 text-center text-gray-500 text-xs">
-                            <p>Merci d'utiliser notre service de transport</p>
+                            <p>Merci d&apos;utiliser notre service de transport</p>
                             <p>Ce billet est non transférable et non remboursable.</p>
                         </div>
                     </div>
