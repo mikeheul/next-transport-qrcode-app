@@ -25,7 +25,7 @@ export default function TicketValidator() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ qrCodeData: JSON.parse(parsedData) }),
+                body: JSON.stringify(parsedData),
             });
 
             const result = await response.json();
