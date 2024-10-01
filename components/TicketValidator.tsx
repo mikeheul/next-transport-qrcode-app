@@ -64,7 +64,7 @@ export default function TicketValidator() {
 
                 {/* Overlay for validation result */}
                 {validationResult && (
-                    <div className="absolute w-[500px] h-[500px] inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-lg">
+                    <div className="absolute top-0 left-0 w-[500px] h-[500px] inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-lg">
                         <div className="flex items-center text-white p-4 rounded-lg shadow-lg">
                             {isValid ? (
                                 <CheckCircle className="text-green-500 w-8 h-8 mr-2" />
