@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import QrReader from 'react-qr-scanner';
 
 // Importation dynamique pour éviter les problèmes SSR (Server-Side Rendering)
 const QrScanner = dynamic(() => import('react-qr-scanner'), { ssr: false });
@@ -54,12 +55,12 @@ export default function TicketValidator() {
             <h1 className="text-2xl font-bold">Contrôleur de billets</h1>
 
             {/* Scanner QR */}
-            <QrScanner
+            <QrReader
                 delay={300}
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
-                facingMode={isBackCamera ? "rear" : "front"}
+                constraints={{ facingMode: 'environment' }}
             />
 
             <button 
