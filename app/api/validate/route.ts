@@ -1,41 +1,38 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import crypto from 'crypto';
+import { NextRequest, NextResponse } from 'next/server';
 
 const SECRET_KEY = process.env.SECRET_KEY || 'your-very-secure-key';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
-        const { qrCodeData } = req.body;
+export default async function POST(req: NextRequest) {
+    
+    const { qrCodeData } = await req.json();
 
-        try {
-            // Extraire les données et la signature du QR code
-            const { validUntil, signature } = qrCodeData;
+    try {
+        // Extraire les données et la signature du QR code
+        const { validUntil, signature } = qrCodeData;
 
-            // Recalcul de la signature à partir des données du billet
-            const recalculatedSignature = crypto
-                .createHmac('sha256', SECRET_KEY)
-                .update(JSON.stringify({ validUntil }))
-                .digest('hex');
+        // Recalcul de la signature à partir des données du billet
+        const recalculatedSignature = crypto
+            .createHmac('sha256', SECRET_KEY)
+            .update(JSON.stringify({ validUntil }))
+            .digest('hex');
 
-            // Comparaison de la signature recalculée et celle du QR code
-            if (recalculatedSignature === signature) {
-                const now = new Date();
-                const validUntilDate = new Date(validUntil);
+        // Comparaison de la signature recalculée et celle du QR code
+        if (recalculatedSignature === signature) {
+            const now = new Date();
+            const validUntilDate = new Date(validUntil);
 
-                // Vérification de la date de validité du billet
-                if (now <= validUntilDate) {
-                    res.status(200).json({ valid: true, message: 'Billet valide' });
-                } else {
-                    res.status(400).json({ valid: false, message: 'Billet expiré' });
-                }
+            // Vérification de la date de validité du billet
+            if (now <= validUntilDate) {
+                return NextResponse.json({ valid: true, message: 'Billet valide' });
             } else {
-                // Signature invalide, possible tentative de falsification
-                res.status(400).json({ valid: false, message: 'Signature invalide ou billet falsifié.' });
+                return NextResponse.json({ valid: false, message: 'Billet expiré' });
             }
-        } catch (error) {
-            res.status(500).json({ error: 'Erreur lors de la validation du billet.' });
-        }
-    } else {
-        res.status(405).json({ message: 'Méthode non autorisée' });
+        } else {
+            // Signature invalide, possible tentative de falsification
+            return NextResponse.json({ valid: false, message: 'Signature invalide ou billet falsifié.' });        }
+    } catch (error) {
+        return NextResponse.json(error);        
     }
 }
+
