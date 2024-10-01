@@ -5,7 +5,7 @@ const SECRET_KEY = process.env.SECRET_KEY || 'b9f3150f283cdff4725b8b9e3c65b4bb93
 
 export async function POST(req: NextRequest) {
     
-    const { qrCodeData } = await req.json();
+    const qrCodeData = await req.json();
 
     try {
         // Extraire les données et la signature du QR code
