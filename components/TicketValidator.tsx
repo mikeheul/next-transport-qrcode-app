@@ -34,7 +34,7 @@ export default function TicketValidator() {
     };
 
     // Gestion des erreurs lors du scan
-    const handleError = (err: any) => {
+    const handleError = (err: Error) => {
         console.error(err);
         setValidationResult('Erreur de scan du QR code.');
     };
