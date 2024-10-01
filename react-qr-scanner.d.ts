@@ -7,7 +7,7 @@ declare module 'react-qr-scanner' {
         onScan?: (data: string | null) => void;
         style?: React.CSSProperties;
         // facingMode?: 'front' | 'rear';
-        constraints?: {};
+        constraints?: MeiiaTrackConstraints;
     }
 
     const QrReader: ComponentType<QrReaderProps>;
