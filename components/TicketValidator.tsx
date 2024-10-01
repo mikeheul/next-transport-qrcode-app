@@ -9,6 +9,7 @@ const QrScanner = dynamic(() => import('react-qr-scanner'), { ssr: false });
 export default function TicketValidator() {
     const [qrCodeData, setQrCodeData] = useState<string | null>(null);
     const [validationResult, setValidationResult] = useState<string | null>(null);
+    const [isBackCamera, setIsBackCamera] = useState<boolean>(true); // State to track camera mode
 
     // Cette fonction gère la lecture des données du QR code
     const handleScan = async (data: string | null) => {
@@ -39,6 +40,10 @@ export default function TicketValidator() {
         setValidationResult('Erreur de scan du QR code.');
     };
 
+    const toggleCamera = () => {
+        setIsBackCamera((prev) => !prev); // Toggle the camera mode
+    };
+
     const previewStyle = {
         height: 240,
         width: 320,
@@ -54,8 +59,15 @@ export default function TicketValidator() {
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
-                facingMode="user"
+                facingMode={isBackCamera ? "environment" : "user"}
             />
+
+            <button 
+                onClick={toggleCamera} 
+                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+            >
+                    {isBackCamera ? 'Utiliser la caméra frontale' : 'Utiliser la caméra arrière'}
+            </button>
 
             {qrCodeData && <p className="mt-4">Données scannées : {qrCodeData}</p>}
             {validationResult && <p className="mt-4">Résultat : {validationResult}</p>}
