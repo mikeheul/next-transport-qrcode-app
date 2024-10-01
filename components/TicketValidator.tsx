@@ -8,9 +8,7 @@ import { CheckCircle, XCircle } from 'lucide-react'; // Import the icons
 const QrScanner = dynamic(() => import('react-qr-scanner'), { ssr: false });
 
 export default function TicketValidator() {
-    // const [qrCodeData, setQrCodeData] = useState<string | null>(null);
     const [validationResult, setValidationResult] = useState<string | null>(null);
-    const [isBackCamera, setIsBackCamera] = useState<boolean>(true); // State to track camera mode
     const [isValid, setIsValid] = useState<boolean | null>(null); // State to track validation status
 
     // Cette fonction gère la lecture des données du QR code
@@ -38,10 +36,6 @@ export default function TicketValidator() {
     const handleError = (err: Error) => {
         console.error(err);
         setValidationResult('Erreur de scan du QR code.');
-    };
-
-    const toggleCamera = () => {
-        setIsBackCamera((prev) => !prev); // Toggle the camera mode
     };
 
     const previewStyle = {
