@@ -38,3 +38,21 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }
+
+export async function GET() {
+    
+    try {
+
+        const tickets = await db.ticket.findMany({
+            orderBy: {
+                createdAt: 'asc'
+            }
+        });
+
+        return NextResponse.json(tickets, { status: 200 });
+
+    } catch (error) {
+        console.error("[GET_TICKET]", error);
+        return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    }
+}
