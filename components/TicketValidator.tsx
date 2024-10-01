@@ -41,30 +41,33 @@ export default function TicketValidator() {
     const previewStyle = {
         height: 500,
         width: 500,
+        borderRadius: '50px'
     };
 
     return (
-        <div className="bg-white shadow-md rounded-lg p-6">
-            <h1 className="text-3xl font-bold mb-4 text-center">Contrôleur de billets</h1>
+        <div className="">
+            <h1 className="text-3xl font-bold mb-4 text-center text-white">Contrôleur de billets</h1>
 
+            <div className='flex justify-center'>
+                <QrScanner
+                    delay={300}
+                    onError={handleError}
+                    onScan={handleScan}
+                    style={previewStyle}
+                    // facingMode={isBackCamera ? 'front' : 'rear'}
+                    constraints={{
+                        video: {
+                            aspectRatio: 1,
+                            facingMode: { ideal: 'environment' }  // Use 'environment' for the rear camera
+                        }
+                    }}
+                />
+            </div>
             {/* Scanner QR */}
-            <QrScanner
-                delay={300}
-                onError={handleError}
-                onScan={handleScan}
-                style={previewStyle}
-                // facingMode={isBackCamera ? 'front' : 'rear'}
-                constraints={{
-                    video: {
-                        aspectRatio: 1,
-                        facingMode: { ideal: 'environment' }  // Use 'environment' for the rear camera
-                    }
-                }}
-            />
 
             {/* {qrCodeData && <p className="mt-4 text-center">Données scannées : {qrCodeData}</p>} */}
             {validationResult && (
-                <div className="mt-4 flex items-center justify-center">
+                <div className="mt-4 flex items-center justify-center text-white">
                     {isValid ? (
                         <CheckCircle className="text-green-500 w-6 h-6 mr-2" />
                     ) : (

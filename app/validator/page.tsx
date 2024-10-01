@@ -3,7 +3,7 @@ import React from 'react'
 
 const ControlPage = () => {
     return (
-        <div className="container mx-auto py-8">
+        <div className="min-h-screen bg-slate-800 py-6">
             {/* Intégration du composant TicketValidator */}
             <TicketValidator />
         </div>
