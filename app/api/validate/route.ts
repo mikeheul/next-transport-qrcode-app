@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const SECRET_KEY = process.env.SECRET_KEY || 'b9f3150f283cdff4725b8b9e3c65b4bb935ac153b9f2b4415b02f5c1aa76261f';
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
     
     const { qrCodeData } = await req.json();
 
