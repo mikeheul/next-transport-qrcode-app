@@ -71,7 +71,7 @@ export default function TicketValidator() {
                 </button>
             </div>
 
-            {qrCodeData && <p className="mt-4 text-center">Données scannées : {qrCodeData}</p>}
+            {/* {qrCodeData && <p className="mt-4 text-center">Données scannées : {qrCodeData}</p>} */}
             {validationResult && (
                 <div className="mt-4 flex items-center justify-center">
                     {isValid ? (
