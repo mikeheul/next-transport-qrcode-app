@@ -47,7 +47,7 @@ export default function TicketValidator() {
         <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold mb-4 text-center text-white">Contrôleur de billets</h1>
 
-            <div className='relative flex justify-center w-full'>
+            <div className='relative flex justify-center w-full overflow-hidden'>
                 <div style={previewStyle}> {/* Wrap QrScanner to handle the styling */}
                     <QrScanner
                         delay={300}
