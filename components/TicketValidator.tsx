@@ -59,7 +59,7 @@ export default function TicketValidator() {
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
-                constraints={{ facingMode: isBackCamera ? 'environment' : 'user' }}
+                facingMode={isBackCamera ? 'front' : 'rear'}
             />
 
             <button 
