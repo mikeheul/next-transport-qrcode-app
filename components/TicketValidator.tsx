@@ -39,7 +39,7 @@ export default function TicketValidator() {
 
     return (
         <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold mb-4 text-center text-white">Contrôleur de billets</h1>
+            <h1 className="text-3xl font-bold mb-4 text-center text-white">Scan billet</h1>
 
             {/* Container with fixed dimensions for md, lg, xl and full width for mobile */}
             <div className="relative flex justify-center w-full max-h-[500px] sm:w-[500px] aspect-[1/1]">

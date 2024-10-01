@@ -30,7 +30,7 @@ const TicketPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-800 p-6">
-            <h1 className="text-3xl font-bold mb-6 text-center text-white">Générer un billet de transport</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center text-white">Générer un billet</h1>
             
             {/* Stunning Cards for Ticket Options */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
