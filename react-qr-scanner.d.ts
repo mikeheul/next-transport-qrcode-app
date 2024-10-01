@@ -6,7 +6,7 @@ declare module 'react-qr-scanner' {
         onError?: (error: any) => void;
         onScan?: (data: string | null) => void;
         style?: React.CSSProperties;
-        facingMode?: 'user' | 'environment'; // Définit quelle caméra utiliser
+        facingMode?: 'front' | 'rear'; // Définit quelle caméra utiliser
     }
 
     const QrReader: ComponentType<QrReaderProps>;
