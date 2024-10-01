@@ -41,7 +41,6 @@ export default function TicketValidator() {
     const previewStyle = {
         height: 500,
         width: 500,
-        borderRadius: '50px'
     };
 
     return (
