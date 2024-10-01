@@ -54,6 +54,7 @@ export default function TicketValidator() {
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
+                facingMode="environment"
             />
 
             {qrCodeData && <p className="mt-4">Données scannées : {qrCodeData}</p>}
