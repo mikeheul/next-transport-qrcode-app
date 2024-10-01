@@ -1,3 +1,30 @@
+# Ticketing System
+
+## Overview
+
+This project is a **QR code-based ticketing system** built using **Next.js** and **React**. The system allows users to generate transport tickets with a QR code that includes a validation signature to prevent tampering. Users can also validate these tickets using a QR code scanner and verify their authenticity. The application features two main pages:
+
+1. **Ticket Generator Page**: Users can generate a ticket with a specified validity date and time. A QR code is created and displayed for the ticket.
+2. **Ticket Validator Page**: Users can scan a QR code using their device’s camera to verify the authenticity of the ticket.
+
+## Features
+
+- **QR Code Generation**: Generates a secure QR code for tickets using `crypto` and HMAC signatures.
+- **QR Code Validation**: Scans QR codes and checks if the ticket is valid and unmodified.
+- **Mobile Camera Support**: Uses the device’s camera to scan QR codes (with support for front and rear cameras).
+- **Lucide Icons**: Provides visual feedback (green check for valid tickets and red cross for invalid tickets).
+- **Dynamic QR Scanner Import**: Improves performance by only loading the QR scanner on the client-side.
+  
+## Tech Stack
+
+- **Frontend**: React (Next.js), TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes
+- **Database**: Prisma ORM (SQLite or PostgreSQL)
+- **QR Code Library**: `qrcode` for generating QR codes
+- **Icons**: `lucide-react` for UI feedback
+- **Styling**: Tailwind CSS
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
