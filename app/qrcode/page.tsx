@@ -49,7 +49,7 @@ const TicketPage = () => {
             {ticket && (
                 <div className="mt-8">
                     <h2 className="text-xl font-semibold">QR Code du billet</h2>
-                    <Image src={ticket.qrCode} alt="QR Code" width={50} height={50} />
+                    <Image src={ticket.qrCode} alt="QR Code" width={200} height={200} />
                     <p>Date de validité : {new Date(ticket.validUntil).toLocaleString()}</p>
                 </div>
             )}
