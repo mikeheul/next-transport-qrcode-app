@@ -8,8 +8,11 @@ declare module 'react-qr-scanner' {
         style?: React.CSSProperties;
         // facingMode?: 'front' | 'rear';
         constraints?: {
-            aspectRatio: number;
-            facingMode: { ideal: string };
+            video: {
+                aspectRatio: number;
+                facingMode: { ideal: string };
+            };
+            audio?: boolean;  // optional, can be included if you need audio
         };
     }
 

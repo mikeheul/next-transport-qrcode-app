@@ -60,7 +60,12 @@ export default function TicketValidator() {
                 onScan={handleScan}
                 style={previewStyle}
                 // facingMode={isBackCamera ? 'front' : 'rear'}
-                constraints={{aspectRatio: 1, facingMode: {ideal: 'environment'}}}
+                constraints={{
+                    video: {
+                        aspectRatio: 1,
+                        facingMode: { ideal: 'environment' }  // Use 'environment' for the rear camera
+                    }
+                }}
             />
 
             <div className="flex justify-center mt-4">
