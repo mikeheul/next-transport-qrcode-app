@@ -10,10 +10,11 @@ const QrScanner = dynamic(() => import('react-qr-scanner'), { ssr: false });
 export default function TicketValidator() {
     const [validationResult, setValidationResult] = useState<string | null>(null);
     const [isValid, setIsValid] = useState<boolean | null>(null); // State to track validation status
+    const [scanning, setScanning] = useState(true); // Control scanning state
 
     // Cette fonction gère la lecture des données du QR code
     const handleScan = async (data: { text: string } | null) => {
-        if (data && data.text) {
+        if (data && data.text && scanning) {
             //setQrCodeData(data.text);
             const parsedData = JSON.parse(data.text);
             
@@ -29,6 +30,12 @@ export default function TicketValidator() {
             const result = await response.json();
             setValidationResult(result.valid ? 'Billet valide !' : 'Billet invalide ou falsifié.');
             setIsValid(result.valid); // Set the validation status
+
+            // Restart scanning after 2 seconds (or adjust time as needed)
+            setTimeout(() => {
+                setValidationResult(null); // Optionally clear previous result
+                setScanning(true); // Allow scanning again
+            }, 2000);
         }
     };
 
@@ -53,7 +60,6 @@ export default function TicketValidator() {
                     onError={handleError}
                     onScan={handleScan}
                     style={previewStyle}
-                    // facingMode={isBackCamera ? 'front' : 'rear'}
                     constraints={{
                         video: {
                             aspectRatio: 1,
