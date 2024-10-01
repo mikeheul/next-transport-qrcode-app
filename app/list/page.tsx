@@ -30,7 +30,7 @@ const TicketsPage = () => {
     };
 
     return (
-        <div className="bg-gray-100 min-h-screen flex flex-col items-center p-10">
+        <div className="bg-gray-100 min-h-screen flex flex-col items-center py-10 px-5 md:px-10">
             <h1 className="text-4xl font-bold text-center mb-8">Your Tickets</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {tickets.map((ticket, index) => {

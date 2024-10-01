@@ -9,7 +9,7 @@ const Header = () => {
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-2xl font-bold text-white">Tickets</h1>
                 <nav>
-                    <ul className="hidden sm:flex items-center justify-center space-x-6">
+                    <ul className="flex flex-col sm:flex-row gap-3 items-center justify-center">
                         <li>
                             <Link
                                 href="/qrcode"
