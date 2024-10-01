@@ -12,12 +12,12 @@ export default function TicketValidator() {
     const [isBackCamera, setIsBackCamera] = useState<boolean>(true); // State to track camera mode
 
     // Cette fonction gère la lecture des données du QR code
-    const handleScan = async (data: string | null) => {
-        if (data) {
+    const handleScan = async (data: { text: string } | null) => {
+        if (data && data.text) {
 
-            console.log(data)
+            setQrCodeData(data.text);
 
-            setQrCodeData(data);
+            const parsedData = JSON.parse(data.text);
             
             // Envoi des données scannées au serveur pour validation
             const response = await fetch('/api/validate', {
@@ -25,7 +25,7 @@ export default function TicketValidator() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ qrCodeData: JSON.parse(data) }),
+                body: JSON.stringify({ qrCodeData: JSON.parse(parsedData) }),
             });
 
             const result = await response.json();
