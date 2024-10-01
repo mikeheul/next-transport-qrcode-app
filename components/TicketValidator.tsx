@@ -45,8 +45,8 @@ export default function TicketValidator() {
     };
 
     const previewStyle = {
-        height: 240,
-        width: 320,
+        height: 500,
+        width: 500,
     };
 
     return (
@@ -59,7 +59,8 @@ export default function TicketValidator() {
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
-                facingMode={isBackCamera ? 'front' : 'rear'}
+                // facingMode={isBackCamera ? 'front' : 'rear'}
+                constraints={{aspectRatio: 1, facingMode: {ideal: 'environment'}}}
             />
 
             <div className="flex justify-center mt-4">
