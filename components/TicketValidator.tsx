@@ -68,15 +68,6 @@ export default function TicketValidator() {
                 }}
             />
 
-            <div className="flex justify-center mt-4">
-                <button 
-                    onClick={toggleCamera} 
-                    className="bg-blue-500 text-white py-2 px-4 rounded transition duration-200 hover:bg-blue-600"
-                >
-                    {isBackCamera ? 'Utiliser la caméra frontale' : 'Utiliser la caméra arrière'}
-                </button>
-            </div>
-
             {/* {qrCodeData && <p className="mt-4 text-center">Données scannées : {qrCodeData}</p>} */}
             {validationResult && (
                 <div className="mt-4 flex items-center justify-center">
