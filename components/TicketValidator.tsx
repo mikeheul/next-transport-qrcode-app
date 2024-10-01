@@ -14,6 +14,9 @@ export default function TicketValidator() {
     // Cette fonction gère la lecture des données du QR code
     const handleScan = async (data: string | null) => {
         if (data) {
+
+            console.log(data)
+
             setQrCodeData(data);
             
             // Envoi des données scannées au serveur pour validation
@@ -22,7 +25,7 @@ export default function TicketValidator() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ qrCodeData: JSON.parse(data) }), // Conversion en objet JSON
+                body: JSON.stringify({ qrCodeData: JSON.parse(data) }),
             });
 
             const result = await response.json();
