@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import QrReader from 'react-qr-scanner';
 
 // Importation dynamique pour éviter les problèmes SSR (Server-Side Rendering)
 const QrScanner = dynamic(() => import('react-qr-scanner'), { ssr: false });
