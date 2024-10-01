@@ -19,7 +19,7 @@ This project is a **QR code-based ticketing system** built using **Next.js** and
 
 - **Frontend**: React (Next.js), TypeScript, Tailwind CSS
 - **Backend**: Next.js API Routes
-- **Database**: Prisma ORM (SQLite or PostgreSQL)
+- **Database**: Prisma ORM (MongoDB)
 - **QR Code Library**: `qrcode` for generating QR codes
 - **Icons**: `lucide-react` for UI feedback
 - **Styling**: Tailwind CSS
