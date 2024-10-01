@@ -1,0 +1,6 @@
+model Ticket {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    qrCode    String
+    createdAt DateTime @default(now())
+    validUntil DateTime
+}
