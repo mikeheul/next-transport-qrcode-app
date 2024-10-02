@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -10,9 +11,12 @@ interface Ticket {
 
 const TicketPage = () => {
     const [ticket, setTicket] = useState<Ticket | null>(null);
+    const [loading, setLoading] = useState(false); // Loading state
 
     // Function to generate a ticket with the specified duration
     const handleGenerateTicket = async (hours: number) => {
+
+        setLoading(true);
         const currentDateTime = new Date();
         
         const validUntil = new Date(currentDateTime.getTime() + hours * 60 * 60 * 1000).toISOString();
@@ -26,7 +30,9 @@ const TicketPage = () => {
         });
 
         const data: Ticket = await res.json();
+        
         setTicket(data);
+        setLoading(false);
     };
 
     return (
@@ -35,7 +41,7 @@ const TicketPage = () => {
             <div className="text-center mb-12">
                 <h1 className="text-5xl font-extrabold text-white">Effortless Ticket Generation</h1>
                 <p className="text-lg text-gray-300 mt-4">
-                    Welcome to the future of ticketing. Whether you're heading out for an hour or planning your travels for the next two days, we've got you covered. Generate your personal QR code in seconds, and you're ready to go!
+                    Welcome to the future of ticketing. Whether you&apos;re heading out for an hour or planning your travels for the next two days, we&apos;ve got you covered. Generate your personal QR code in seconds, and you&apos;re ready to go !
                 </p>
             </div>
 
@@ -70,6 +76,13 @@ const TicketPage = () => {
                     <p className="text-sm mb-4">Valid for 48 hours from now.</p>
                 </div>
             </div>
+
+            {/* Spinner for Loading */}
+            {loading && (
+                <div className="flex justify-center mt-5">
+                    <Loader className="animate-spin text-white h-10 w-10" /> {/* Spinning loader icon */}
+                </div>
+            )}
 
             {/* Display the generated ticket */}
             {ticket && (
