@@ -65,7 +65,7 @@ const TicketsPage = () => {
                                 <h2 className="text-xl font-semibold text-gray-100 text-center">Ticket Valid Until</h2>
                                 <p className="text-white text-center">{new Date(ticket.validUntil).toLocaleString()}</p>
                                 <div className="mt-4">
-                                    <Image src={ticket.qrCode} alt="QR Code" className="w-full h-40 object-contain" />
+                                    <Image src={ticket.qrCode} alt="QR Code" width={150} height={150} className="w-full h-40 object-contain" />
                                 </div>
                                 <div className={`mt-4 p-2 text-center text-white rounded ${valid ? 'bg-green-600' : 'bg-red-600'}`}>
                                     <p>{valid ? 'Valid Ticket' : 'Invalid Ticket'}</p>
