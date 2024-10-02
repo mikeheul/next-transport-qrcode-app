@@ -1,8 +1,10 @@
 "use client"
 
+import { Trash2Icon } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
 interface Ticket {
+    id: string;
     qrCode: string;
     validUntil: string;
 }
@@ -29,6 +31,18 @@ const TicketsPage = () => {
         return validUntilDate >= currentDate; // Check if validUntil is greater than or equal to current date
     };
 
+    const handleDelete = async (ticketId: string) => {
+        
+        try {
+            await fetch(`/api/ticket?ticketId=${ticketId}`, {
+                method: 'DELETE',
+            });
+            setTickets((prev) => prev.filter((ticket) => ticket.id !== ticketId)); // Update state
+        } catch (error) {
+            console.error('Error deleting meal plan:', error);
+        }
+    };
+
     return (
         <div className="min-h-screen flex flex-col items-center py-10 px-5 md:px-10">
             <h1 className="text-4xl font-bold text-center mb-8 text-white">Your Tickets</h1>
@@ -38,7 +52,7 @@ const TicketsPage = () => {
                     const valid = isTicketValid(ticket.validUntil); // Check if the ticket is valid
 
                     return (
-                        <div key={index} className="bg-gray-700 shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 w-full">
+                        <div key={index} className="relative bg-gray-700 shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 w-full">
                             <div className="p-6">
                                 <h2 className="text-xl font-semibold text-gray-100 text-center">Ticket Valid Until</h2>
                                 <p className="text-gray-400 text-center">{new Date(ticket.validUntil).toLocaleString()}</p>
@@ -51,6 +65,13 @@ const TicketsPage = () => {
                             </div>
                             <div className="bg-gray-600 px-6 py-4">
                                 <p className="text-gray-300 text-center font-medium">Scan this QR code to validate your ticket.</p>
+                            </div>
+                            <div className="absolute top-5 right-5">
+                                <button
+                                    onClick={() => handleDelete(ticket.id)}
+                                >
+                                    <Trash2Icon className="text-red-500" />
+                                </button>
                             </div>
                         </div>
                     );

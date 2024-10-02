@@ -14,6 +14,7 @@ const TicketPage = () => {
     // Function to generate a ticket with the specified duration
     const handleGenerateTicket = async (hours: number) => {
         const currentDateTime = new Date();
+        
         const validUntil = new Date(currentDateTime.getTime() + hours * 60 * 60 * 1000).toISOString();
 
         const res = await fetch('/api/ticket', {

@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
     const { validUntil } = await req.json();
     
     try {
+        
         const ticketData = {
             validUntil: new Date(validUntil).toISOString(),
         };
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
         const ticket = await db.ticket.create({
             data: {
                 qrCode,
-                validUntil: new Date(validUntil),
+                validUntil: ticketData.validUntil,
             },
         });
 
@@ -45,7 +46,7 @@ export async function GET() {
 
         const tickets = await db.ticket.findMany({
             orderBy: {
-                createdAt: 'asc'
+                validUntil: 'asc'
             }
         });
 
@@ -53,6 +54,36 @@ export async function GET() {
 
     } catch (error) {
         console.error("[GET_TICKET]", error);
+        return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    }
+}
+
+export async function DELETE(req: NextRequest) {
+
+    const { searchParams } = new URL(req.url);
+    const ticketId = searchParams.get('ticketId');
+    
+    if (!ticketId) {
+        return NextResponse.json({ message: "Ticket ID is required" }, { status: 400 });
+    }
+
+    try {
+
+        const deletedTicket = await db.ticket.delete({
+            where: {
+                id: ticketId,
+            },
+        });
+
+        // If no meal plan is found or deleted, return an error response
+        if (!deletedTicket) {
+            return NextResponse.json({ message: "Ticket not found" }, { status: 404 });
+        }
+
+        return NextResponse.json({ message: "Ticket deleted successfully!" }, { status: 200 });
+
+    } catch (error) {
+        console.error("[DELETE_TICKET]", error);
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }
