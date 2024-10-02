@@ -24,7 +24,7 @@ export default function Home() {
       {/* Feature Section */}
       <div className="py-36 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">Why EasyTransport?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">Why EasyTransport ?</h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="bg-gray-700 rounded-lg shadow-lg p-6 text-center transition transform hover:scale-105">
@@ -54,7 +54,7 @@ export default function Home() {
       {/* Call to Action Section */}
       <div className="py-36 bg-gradient-to-r from-green-600 to-blue-500 text-center p-5">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white">
-          Start your journey with EasyTransport today!
+          Start your journey with EasyTransport today !
         </h2>
         <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-200">
           Get your tickets in seconds and travel with ease. Trusted by thousands of commuters.

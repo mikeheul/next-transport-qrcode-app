@@ -31,6 +31,14 @@ const TicketPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900 py-10 px-5">
+            {/* Introduction Section */}
+            <div className="text-center mb-12">
+                <h1 className="text-5xl font-extrabold text-white">Effortless Ticket Generation</h1>
+                <p className="text-lg text-gray-300 mt-4">
+                    Welcome to the future of ticketing. Whether you're heading out for an hour or planning your travels for the next two days, we've got you covered. Generate your personal QR code in seconds, and you're ready to go!
+                </p>
+            </div>
+
             <h1 className="text-4xl font-bold text-center mb-8 text-white">Generate a Ticket</h1>
 
             {/* Stunning Cards for Ticket Options */}

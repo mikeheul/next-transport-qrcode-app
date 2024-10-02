@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Trash2Icon } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
@@ -32,19 +32,26 @@ const TicketsPage = () => {
     };
 
     const handleDelete = async (ticketId: string) => {
-        
         try {
             await fetch(`/api/ticket?ticketId=${ticketId}`, {
                 method: 'DELETE',
             });
             setTickets((prev) => prev.filter((ticket) => ticket.id !== ticketId)); // Update state
         } catch (error) {
-            console.error('Error deleting meal plan:', error);
+            console.error('Error deleting ticket:', error);
         }
     };
 
     return (
         <div className="min-h-screen flex flex-col items-center py-10 px-5 md:px-10">
+            {/* Introduction Section */}
+            <div className="text-center mb-12">
+                <h1 className="text-5xl font-extrabold text-white">Your Ticket Dashboard</h1>
+                <p className="text-lg text-gray-300 mt-4">
+                    Manage all your tickets in one place. Review their validity, scan the QR codes, and remove expired or unused tickets. Stay in control of your travels with ease and convenience.
+                </p>
+            </div>
+
             <h1 className="text-4xl font-bold text-center mb-8 text-white">Your Tickets</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {tickets.map((ticket, index) => {
