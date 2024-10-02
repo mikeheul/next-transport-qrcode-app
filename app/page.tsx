@@ -12,10 +12,10 @@ export default function Home() {
           The fastest and most convenient way to generate, manage, and validate your transport tickets. Seamless, secure, and at your fingertips.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 mt-8">
-          <Link href="/qrcode" className="px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold rounded-lg shadow-lg transition transform hover:scale-105">
+          <Link href="/qrcode" className="px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold rounded-lg shadow-lg transition">
             Generate Ticket
           </Link>
-          <Link href="validator" className="px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold rounded-lg shadow-lg transition transform hover:scale-105">
+          <Link href="validator" className="px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold rounded-lg shadow-lg transition">
             Validate Ticket
           </Link>
         </div>
@@ -60,7 +60,7 @@ export default function Home() {
           Get your tickets in seconds and travel with ease. Trusted by thousands of commuters.
         </p>
         <div className="mt-8">
-          <button className="px-8 py-3 text-sm sm:text-base md:text-lg lg:text-xl bg-white text-green-600 font-bold rounded-lg shadow-lg transition transform hover:scale-105">
+          <button className="px-8 py-3 text-sm sm:text-base md:text-lg lg:text-xl bg-white text-green-600 font-bold rounded-lg shadow-lg transition hover:bg-white/90">
             Get Started
           </button>
         </div>
