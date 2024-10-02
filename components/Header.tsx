@@ -7,7 +7,9 @@ const Header = () => {
     return (
         <header className="bg-slate-900 px-10 py-8 shadow-md">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-2xl font-bold text-white">Tickets</h1>
+                <Link href="/">
+                    <h1 className="text-2xl font-bold text-white">EasyTransport</h1>
+                </Link>
                 <nav>
                     <ul className="flex flex-col sm:flex-row gap-3 items-center justify-center">
                         <li>

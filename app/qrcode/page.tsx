@@ -29,15 +29,15 @@ const TicketPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-800 py-10 px-5">
-            <h1 className="text-4xl font-bold text-center mb-8 text-white">Generate a ticket</h1>
-            
+        <div className="min-h-screen bg-gray-900 py-10 px-5">
+            <h1 className="text-4xl font-bold text-center mb-8 text-white">Generate a Ticket</h1>
+
             {/* Stunning Cards for Ticket Options */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {/* 1 Hour Ticket Card */}
                 <div
                     onClick={() => handleGenerateTicket(1)}
-                    className="bg-blue-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:bg-blue-600 hover:shadow-2xl cursor-pointer"
+                    className="bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:from-green-600 hover:to-blue-600 hover:shadow-2xl cursor-pointer"
                 >
                     <h3 className="text-xl font-semibold mb-2">1 Hour</h3>
                     <p className="text-sm mb-4">Valid for 1 hour from now.</p>
@@ -46,7 +46,7 @@ const TicketPage = () => {
                 {/* 24 Hours Ticket Card */}
                 <div
                     onClick={() => handleGenerateTicket(24)}
-                    className="bg-green-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:bg-green-600 hover:shadow-2xl cursor-pointer"
+                    className="bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:from-blue-600 hover:to-purple-600 hover:shadow-2xl cursor-pointer"
                 >
                     <h3 className="text-xl font-semibold mb-2">24 Hours</h3>
                     <p className="text-sm mb-4">Valid for 24 hours from now.</p>
@@ -55,7 +55,7 @@ const TicketPage = () => {
                 {/* 48 Hours Ticket Card */}
                 <div
                     onClick={() => handleGenerateTicket(48)}
-                    className="bg-purple-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:bg-purple-600 hover:shadow-2xl cursor-pointer"
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:from-purple-600 hover:to-pink-600 hover:shadow-2xl cursor-pointer"
                 >
                     <h3 className="text-xl font-semibold mb-2">48 Hours</h3>
                     <p className="text-sm mb-4">Valid for 48 hours from now.</p>
