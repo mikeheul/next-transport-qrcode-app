@@ -48,7 +48,7 @@ export default function TicketValidator({ delay = 300}: TicketValidatorProps) {
             {/* Container with fixed dimensions for md, lg, xl and full width for mobile */}
             <div className="relative flex justify-center w-full max-h-[500px] sm:w-[500px] aspect-[1/1]">
                 <QrScanner
-                    delay={300}
+                    delay={delay}
                     onError={handleError}
                     onScan={handleScan}
                     style={{ height: '100%', width: '100%' }} // Set the height and width to fill the wrapper
