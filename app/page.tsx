@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       {/* Hero Section */}
-      <div className="flex flex-col items-center justify-center text-center py-16 px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col items-center justify-center text-center py-36 px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
           Welcome to EasyTransport
         </h1>
@@ -22,7 +22,7 @@ export default function Home() {
       </div>
 
       {/* Feature Section */}
-      <div className="py-12 bg-gray-800">
+      <div className="py-36 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">Why EasyTransport?</h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -52,7 +52,7 @@ export default function Home() {
       </div>
 
       {/* Call to Action Section */}
-      <div className="py-16 bg-gradient-to-r from-green-600 to-blue-500 text-center p-5">
+      <div className="py-36 bg-gradient-to-r from-green-600 to-blue-500 text-center p-5">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white">
           Start your journey with EasyTransport today!
         </h2>
