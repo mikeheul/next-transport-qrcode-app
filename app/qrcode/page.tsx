@@ -149,7 +149,7 @@ const TicketPage = () => {
 interface PaymentFormProps {
     clientSecret: string; // Changed to not be optional
     hours: number;
-    setTicket: (ticket: any) => void; // Update this type if you have a specific Ticket type
+    setTicket: (ticket: Ticket) => void; // Update this type if you have a specific Ticket type
     setPaymentLoading: (isLoading: boolean) => void; 
     paymentLoading: boolean; // New prop to receive payment loading state
 }
