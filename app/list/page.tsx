@@ -52,10 +52,10 @@ const TicketsPage = () => {
                     const valid = isTicketValid(ticket.validUntil); // Check if the ticket is valid
 
                     return (
-                        <div key={index} className="relative bg-gray-700 shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 w-full">
+                        <div key={index} className="relative bg-gray-700 shadow-lg rounded-lg overflow-hidden hover:bg-slate-600 transition duration-300 w-full">
                             <div className="p-6">
                                 <h2 className="text-xl font-semibold text-gray-100 text-center">Ticket Valid Until</h2>
-                                <p className="text-gray-400 text-center">{new Date(ticket.validUntil).toLocaleString()}</p>
+                                <p className="text-white text-center">{new Date(ticket.validUntil).toLocaleString()}</p>
                                 <div className="mt-4">
                                     <img src={ticket.qrCode} alt="QR Code" className="w-full h-40 object-contain" />
                                 </div>
