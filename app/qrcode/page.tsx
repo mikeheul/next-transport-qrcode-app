@@ -95,6 +95,23 @@ const TicketPage = () => {
                 </Elements>
             )}
 
+            {loading && (
+                <div className="flex justify-center mt-5">
+                    <div className="flex justify-center items-center h-full">
+                        <div className="animate-spin h-8 w-8 border-4 border-t-transparent border-blue-500 rounded-full"></div>
+                    </div>
+                </div>
+            )}
+
+            {/* Display the spinner if payment is loading */}
+            {paymentLoading && (
+                <div className="flex justify-center mt-5">
+                    <div className="flex justify-center items-center h-full">
+                        <div className="animate-spin h-8 w-8 border-4 border-t-transparent border-blue-500 rounded-full"></div>
+                    </div>
+                </div>
+            )}
+
             {/* Display the generated ticket */}
             {ticket && (
                 <div className="flex w-full justify-center mt-5">
