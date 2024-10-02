@@ -52,7 +52,7 @@ export default function Home() {
       </div>
 
       {/* Call to Action Section */}
-      <div className="py-16 bg-gradient-to-r from-green-600 to-blue-500 text-center">
+      <div className="py-16 bg-gradient-to-r from-green-600 to-blue-500 text-center p-5">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white">
           Start your journey with EasyTransport today!
         </h2>
