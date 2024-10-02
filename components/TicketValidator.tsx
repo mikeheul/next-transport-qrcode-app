@@ -7,7 +7,11 @@ import { CheckCircle, XCircle } from 'lucide-react';
 // Dynamic import to avoid SSR issues
 const QrScanner = dynamic(() => import('react-qr-scanner'), { ssr: false });
 
-export default function TicketValidator() {
+interface TicketValidatorProps {
+    delay?: number; 
+}
+
+export default function TicketValidator({ delay = 300}: TicketValidatorProps) {
     const [validationResult, setValidationResult] = useState<string | null>(null);
     const [isValid, setIsValid] = useState<boolean | null>(null); // State to track validation status
 
