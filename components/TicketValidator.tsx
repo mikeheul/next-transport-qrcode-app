@@ -26,7 +26,7 @@ export default function TicketValidator() {
             });
 
             const result = await response.json();
-            setValidationResult(result.valid ? 'Billet valide !' : 'Billet invalide ou falsifié.');
+            setValidationResult(result.valid ? 'Valid ticket!' : 'Invalid or falsified ticket.');
             setIsValid(result.valid); // Set the validation status
         }
     };
@@ -34,12 +34,12 @@ export default function TicketValidator() {
     // Error handling during scanning
     const handleError = (err: Error) => {
         console.error(err);
-        setValidationResult('Erreur de scan du QR code.');
+        setValidationResult('Error scanning QR code.');
     };
 
     return (
         <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold mb-4 text-center text-white">Scan billet</h1>
+            <h1 className="text-4xl font-bold text-center mb-8 text-white">Scan Ticket</h1>
 
             {/* Container with fixed dimensions for md, lg, xl and full width for mobile */}
             <div className="relative flex justify-center w-full max-h-[500px] sm:w-[500px] aspect-[1/1]">

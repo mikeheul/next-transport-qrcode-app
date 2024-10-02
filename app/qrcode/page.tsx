@@ -29,8 +29,8 @@ const TicketPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-800 p-6">
-            <h1 className="text-3xl font-bold mb-6 text-center text-white">Générer un billet</h1>
+        <div className="min-h-screen bg-slate-800 py-10 px-5">
+            <h1 className="text-4xl font-bold text-center mb-8 text-white">Generate a ticket</h1>
             
             {/* Stunning Cards for Ticket Options */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -39,8 +39,8 @@ const TicketPage = () => {
                     onClick={() => handleGenerateTicket(1)}
                     className="bg-blue-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:bg-blue-600 hover:shadow-2xl cursor-pointer"
                 >
-                    <h3 className="text-xl font-semibold mb-2">1 Heure</h3>
-                    <p className="text-sm mb-4">Valide pour 1 heure à partir de maintenant.</p>
+                    <h3 className="text-xl font-semibold mb-2">1 Hour</h3>
+                    <p className="text-sm mb-4">Valid for 1 hour from now.</p>
                 </div>
 
                 {/* 24 Hours Ticket Card */}
@@ -48,8 +48,8 @@ const TicketPage = () => {
                     onClick={() => handleGenerateTicket(24)}
                     className="bg-green-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:bg-green-600 hover:shadow-2xl cursor-pointer"
                 >
-                    <h3 className="text-xl font-semibold mb-2">24 Heures</h3>
-                    <p className="text-sm mb-4">Valide pour 24 heures à partir de maintenant.</p>
+                    <h3 className="text-xl font-semibold mb-2">24 Hours</h3>
+                    <p className="text-sm mb-4">Valid for 24 hours from now.</p>
                 </div>
 
                 {/* 48 Hours Ticket Card */}
@@ -57,8 +57,8 @@ const TicketPage = () => {
                     onClick={() => handleGenerateTicket(48)}
                     className="bg-purple-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:bg-purple-600 hover:shadow-2xl cursor-pointer"
                 >
-                    <h3 className="text-xl font-semibold mb-2">48 Heures</h3>
-                    <p className="text-sm mb-4">Valide pour 48 heures à partir de maintenant.</p>
+                    <h3 className="text-xl font-semibold mb-2">48 Hours</h3>
+                    <p className="text-sm mb-4">Valid for 48 hours from now.</p>
                 </div>
             </div>
 
@@ -68,8 +68,8 @@ const TicketPage = () => {
                     <div className="bg-white rounded-lg shadow-lg p-6 w-full md:max-w-md">
                         {/* Ticket Header */}
                         <div className="text-center">
-                            <h2 className="text-2xl font-bold mb-2">Votre Billet</h2>
-                            <p className="text-gray-500 text-sm mb-4">Scannez ce billet pour valider</p>
+                            <h2 className="text-2xl font-bold mb-2">Your Ticket</h2>
+                            <p className="text-gray-500 text-sm mb-4">Scan this ticket to validate</p>
                         </div>
 
                         {/* QR Code */}
@@ -79,14 +79,14 @@ const TicketPage = () => {
 
                         {/* Ticket Details */}
                         <div className="text-center text-gray-700">
-                            <p className="font-semibold">Date de validité</p>
+                            <p className="font-semibold">Validity Date</p>
                             <p>{new Date(ticket.validUntil).toLocaleString()}</p>
                         </div>
 
                         {/* Ticket Design - Footer */}
                         <div className="mt-6 border-t pt-4 text-center text-gray-500 text-xs">
-                            <p>Merci d&apos;utiliser notre service de transport</p>
-                            <p>Ce billet est non transférable et non remboursable.</p>
+                            <p>Thank you for using our transport service</p>
+                            <p>This ticket is non-transferable and non-refundable.</p>
                         </div>
                     </div>
                 </div>

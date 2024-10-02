@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="">
+            <main className="bg-slate-800">
               {children}  
             </main>
         </div>
