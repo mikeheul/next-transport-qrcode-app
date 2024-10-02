@@ -66,7 +66,7 @@ const TicketsPage = () => {
                             <div className="bg-gray-600 px-6 py-4">
                                 <p className="text-gray-300 text-center font-medium">Scan this QR code to validate your ticket.</p>
                             </div>
-                            <div className="absolute top-5 right-5">
+                            <div className="absolute top-3 right-3 bg-white hover:bg-white/90 rounded-full flex justify-center items-center h-10 w-10 p-1">
                                 <button
                                     onClick={() => handleDelete(ticket.id)}
                                 >
