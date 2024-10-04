@@ -139,6 +139,23 @@ const TicketPage = () => {
                             <p className="font-semibold">Validity Date</p>
                             <p>{new Date(ticket.validUntil).toLocaleString()}</p>
                         </div>
+
+                        <div className="mt-4 text-center">
+                            <p className="text-sm text-gray-500 mb-2">Share this ticket</p>
+                            <input
+                                type="text"
+                                value={`${window.location.origin}/ticket/${ticket.id}`}
+                                readOnly
+                                className="p-2 border rounded w-full text-center mb-2"
+                            />
+                            <button
+                                onClick={() => navigator.clipboard.writeText(`${window.location.origin}/ticket/${ticket.id}`)}
+                                className="bg-blue-500 text-white px-4 py-2 rounded"
+                            >
+                                Copy Link
+                            </button>
+                        </div>
+
                         <div className="mt-6 border-t pt-4 text-center text-gray-500 text-xs">
                             <p>Thank you for using our transport service</p>
                             <p>This ticket is non-transferable and non-refundable.</p>
