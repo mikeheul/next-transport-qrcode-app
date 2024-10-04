@@ -4,7 +4,8 @@
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
-import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
+import { CardCvcElement, CardElement, CardExpiryElement, CardNumberElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
+import { X } from 'lucide-react';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -20,6 +21,7 @@ const TicketPage = () => {
     const [paymentLoading, setPaymentLoading] = useState(false);
     const [clientSecret, setClientSecret] = useState<string | null>(null);
     const [hours, setHours] = useState<number | null>(null);
+    const [showModal, setShowModal] = useState(false); // For modal visibility
 
     const handleGenerateTicket = async (hours: number) => {
         setHours(hours); // Save the hours for the ticket
@@ -40,6 +42,8 @@ const TicketPage = () => {
 
             const data = await res.json();
             setClientSecret(data.clientSecret); // Get the client secret for Stripe payment
+            setShowModal(true); // Show the modal with payment form
+
         } catch (error) {
             console.error('Error generating ticket:', error);
         } finally {
@@ -83,16 +87,19 @@ const TicketPage = () => {
             </div>
 
             {/* Show payment form when clientSecret is available */}
-            {clientSecret && (
-                <Elements stripe={stripePromise} options={{ clientSecret }}>
-                    <PaymentForm
-                        clientSecret={clientSecret}
-                        hours={hours!}
-                        setTicket={setTicket}
-                        setPaymentLoading={setPaymentLoading}
-                        paymentLoading={paymentLoading} // Pass the paymentLoading state
-                    />
-                </Elements>
+            {clientSecret && showModal && (
+                <Modal onClose={() => setShowModal(false)} >
+                    <Elements stripe={stripePromise} options={{ clientSecret }}>
+                        <PaymentForm
+                            clientSecret={clientSecret}
+                            hours={hours!}
+                            setTicket={setTicket}
+                            setPaymentLoading={setPaymentLoading}
+                            paymentLoading={paymentLoading} // Pass the paymentLoading state
+                            onClose={() => setShowModal(false)}
+                        />
+                    </Elements>
+                </Modal>
             )}
 
             {loading && (
@@ -146,15 +153,33 @@ const TicketPage = () => {
     );
 };
 
+// Modal Component
+const Modal = ({ children, onClose }: { children: React.ReactNode, onClose: () => void }) => {
+    return (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+            <div className="relative bg-white rounded-lg shadow-lg max-w-md w-full p-8">
+                <button
+                    className="absolute top-5 right-5 text-black"
+                    onClick={onClose}
+                >
+                    <X size={20} />
+                </button>
+                {children}
+            </div>
+        </div>
+    );
+};
+
 interface PaymentFormProps {
     clientSecret: string; // Changed to not be optional
     hours: number;
     setTicket: (ticket: Ticket) => void; // Update this type if you have a specific Ticket type
     setPaymentLoading: (isLoading: boolean) => void; 
     paymentLoading: boolean; // New prop to receive payment loading state
+    onClose: () => void; // Function to close the modal
 }
 
-const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading }: PaymentFormProps) => {
+const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading, onClose }: PaymentFormProps) => {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -167,7 +192,7 @@ const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading }: Paym
             return;
         }
 
-        const cardElement = elements.getElement(CardElement);
+        const cardElement = elements.getElement(CardNumberElement);
 
         if (!cardElement) {
             console.error("CardElement is not available.");
@@ -206,6 +231,10 @@ const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading }: Paym
 
                 const data: Ticket = await res.json(); // Use the Ticket interface
                 setTicket(data);
+
+                // Close the modal after successful ticket generation
+                onClose();
+
             } catch (error) {
                 console.error('Error generating ticket:', error);
             }
@@ -216,11 +245,24 @@ const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading }: Paym
 
     return (
         <form onSubmit={handleSubmit} className="mt-6">
-            <CardElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+            <div className="mb-4">
+                <label className="text-gray-700">Card Number</label>
+                <CardNumberElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+            </div>
+            <div className="flex space-x-4">
+                <div className="w-1/2">
+                    <label className="text-gray-700">Expiry Date</label>
+                    <CardExpiryElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                </div>
+                <div className="w-1/2">
+                    <label className="text-gray-700">CVC</label>
+                    <CardCvcElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                </div>
+            </div>
             <button 
                 type="submit" 
                 className="bg-blue-600 text-white px-4 py-2 rounded" 
-                disabled={!stripe} // Disable button if stripe is not loaded or payment is loading
+                disabled={!stripe} 
             >
                 Pay Now
             </button>
