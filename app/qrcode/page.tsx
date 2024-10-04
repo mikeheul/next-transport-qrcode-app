@@ -88,7 +88,7 @@ const TicketPage = () => {
 
             {/* Show payment form when clientSecret is available */}
             {clientSecret && showModal && (
-                <Modal onClose={() => setShowModal(false)} >
+                <Modal onClose={() => setShowModal(false)} hours={hours} >
                     <Elements stripe={stripePromise} options={{ clientSecret }}>
                         <PaymentForm
                             clientSecret={clientSecret}
@@ -154,16 +154,26 @@ const TicketPage = () => {
 };
 
 // Modal Component
-const Modal = ({ children, onClose }: { children: React.ReactNode, onClose: () => void }) => {
+const Modal = ({ children, onClose, hours }: { children: React.ReactNode, onClose: () => void, hours: number | null }) => {
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
             <div className="relative bg-white/30 backdrop-blur-lg rounded-lg border border-white/20 shadow-lg max-w-md w-full p-8">
                 <button
-                    className="absolute top-5 right-5 text-black"
+                    className="absolute top-3 right-3 text-black"
                     onClick={onClose}
                 >
                     <X size={20} />
                 </button>
+                {hours && (
+                    <div className="text-center mb-6 p-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg shadow-lg">
+                        <p className="text-2xl font-bold text-white">
+                            Ticket Type : 
+                            <span className="text-2xl">
+                                {` ${hours} ${hours === 1 ? 'Hour' : 'Hours'}`}
+                            </span>
+                        </p>
+                    </div>
+                    )}
                 {children}
             </div>
         </div>
@@ -248,18 +258,18 @@ const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading, onClos
             <h2 className="text-xl font-bold mb-4 text-white text-center">Payment Form</h2>
             <form 
                 onSubmit={handleSubmit} 
-                className="mt-6"
+                className="flex flex-col mt-6"
             >
                 <div className="mb-4">
                     <label className="text-white">Card Number</label>
                     <CardNumberElement className="p-4 bg-gray-100 rounded-lg mb-4" />
                 </div>
-                <div className="flex space-x-4">
-                    <div className="w-1/2">
+                <div className="flex flex-col md:flex-row gap-3">
+                    <div className="w-full md:w-1/2">
                         <label className="text-white">Expiry Date</label>
                         <CardExpiryElement className="p-4 bg-gray-100 rounded-lg mb-4" />
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-full md:w-1/2">
                         <label className="text-white">CVC</label>
                         <CardCvcElement className="p-4 bg-gray-100 rounded-lg mb-4" />
                     </div>
