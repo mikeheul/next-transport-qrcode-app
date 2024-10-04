@@ -276,16 +276,22 @@ const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading, onClos
             >
                 <div className="mb-4">
                     <label className="text-white">Card Number</label>
-                    <CardNumberElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                    <CardNumberElement 
+                        className="p-4 bg-gray-100 rounded-lg mb-4"   
+                    />
                 </div>
                 <div className="flex flex-col md:flex-row gap-3">
                     <div className="w-full md:w-1/2">
                         <label className="text-white">Expiry Date</label>
-                        <CardExpiryElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                        <CardExpiryElement 
+                            className="p-4 bg-gray-100 rounded-lg mb-4"     
+                        />
                     </div>
                     <div className="w-full md:w-1/2">
                         <label className="text-white">CVC</label>
-                        <CardCvcElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                        <CardCvcElement 
+                            className="p-4 bg-gray-100 rounded-lg mb-4" 
+                        />
                     </div>
                 </div>
                 <button 
