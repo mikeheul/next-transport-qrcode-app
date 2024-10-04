@@ -50,7 +50,7 @@ export default function TicketPage({ params }: { params: { ticketId: string } })
 
     if (error) {
         return (
-        <div className="text-center text-red-500 font-semibold mt-10">
+        <div className="text-center text-red-500 font-semibold mt-10 min-h-screen">
             {error}
         </div>
         );
