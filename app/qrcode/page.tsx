@@ -6,6 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
 import { CardCvcElement, CardExpiryElement, CardNumberElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
 import { X } from 'lucide-react';
+import TicketCard from './_components/TicketCard';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -63,27 +64,24 @@ const TicketPage = () => {
             <h1 className="text-4xl font-bold text-center mb-8 text-white">Generate a Ticket</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div
+                <TicketCard
+                    hours={1}
+                    price={2}
+                    description="Valid for 1 hour from now."
                     onClick={() => handleGenerateTicket(1)}
-                    className="bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:from-green-600 hover:to-blue-600 hover:shadow-2xl cursor-pointer"
-                >
-                    <h3 className="text-xl font-semibold mb-2">1 Hour - 2 Euros</h3>
-                    <p className="text-sm mb-4">Valid for 1 hour from now.</p>
-                </div>
-                <div
+                />
+                <TicketCard
+                    hours={24}
+                    price={35}
+                    description="Valid for 24 hours from now."
                     onClick={() => handleGenerateTicket(24)}
-                    className="bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:from-blue-600 hover:to-purple-600 hover:shadow-2xl cursor-pointer"
-                >
-                    <h3 className="text-xl font-semibold mb-2">24 Hours - 35 Euros</h3>
-                    <p className="text-sm mb-4">Valid for 24 hours from now.</p>
-                </div>
-                <div
+                />
+                <TicketCard
+                    hours={48}
+                    price={50}
+                    description="Valid for 48 hours from now."
                     onClick={() => handleGenerateTicket(48)}
-                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg p-6 shadow-lg transition duration-300 hover:from-purple-600 hover:to-pink-600 hover:shadow-2xl cursor-pointer"
-                >
-                    <h3 className="text-xl font-semibold mb-2">48 Hours - 50 Euros</h3>
-                    <p className="text-sm mb-4">Valid for 48 hours from now.</p>
-                </div>
+                />
             </div>
 
             {/* Show payment form when clientSecret is available */}
