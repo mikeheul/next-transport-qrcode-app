@@ -65,7 +65,7 @@ const TicketPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-900 py-10 px-5">
+        <div className="min-h-screen bg-gray-900 py-10 px-5 overflow-hidden">
             <div className="text-center mb-12">
                 <h1 className="text-5xl font-extrabold text-white">Effortless Ticket Generation</h1>
                 <p className="text-lg text-gray-300 mt-4">
