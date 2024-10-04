@@ -1,3 +1,4 @@
+import Feature from "@/components/Feature";
 import Link from "next/link";
 
 export default function Home() {
@@ -26,27 +27,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">Why EasyTransport ?</h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-gray-700 rounded-lg shadow-lg p-6 text-center transition transform hover:scale-105">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-green-400">Instant Ticket Generation</h3>
-              <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-300">
-                Create tickets on the go, with real-time validity tracking, all in just a few clicks.
-              </p>
-            </div>
-            {/* Feature 2 */}
-            <div className="bg-gray-700 rounded-lg shadow-lg p-6 text-center transition transform hover:scale-105">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-blue-400">Fast and Secure Validation</h3>
-              <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-300">
-                Validate tickets in seconds with secure QR code technology, ensuring safety and authenticity.
-              </p>
-            </div>
-            {/* Feature 3 */}
-            <div className="bg-gray-700 rounded-lg shadow-lg p-6 text-center transition transform hover:scale-105">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-purple-400">Seamless Experience</h3>
-              <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-300">
-                A user-friendly interface designed for speed and simplicity. Manage your trips effortlessly.
-              </p>
-            </div>
+            {/* Features */}
+            <Feature title="Instant Ticket Generation" content="Create tickets on the go, with real-time validity tracking, all in just a few clicks." color="text-green-500" />
+            <Feature title="Fast and Secure Validation" content="Validate tickets in seconds with secure QR code technology, ensuring safety and authenticity." color="text-blue-400" />
+            <Feature title="Seamless Experience" content="A user-friendly interface designed for speed and simplicity. Manage your trips effortlessly." color="text-purple-400" />
           </div>
         </div>
       </div>
