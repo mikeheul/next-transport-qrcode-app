@@ -1,4 +1,3 @@
-// pages/ticket.tsx
 "use client";
 
 import { useState } from 'react';
