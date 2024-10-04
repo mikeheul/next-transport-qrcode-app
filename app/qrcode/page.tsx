@@ -157,7 +157,7 @@ const TicketPage = () => {
 const Modal = ({ children, onClose }: { children: React.ReactNode, onClose: () => void }) => {
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="relative bg-white rounded-lg shadow-lg max-w-md w-full p-8">
+            <div className="relative bg-white/30 backdrop-blur-lg rounded-lg border border-white/20 shadow-lg max-w-md w-full p-8">
                 <button
                     className="absolute top-5 right-5 text-black"
                     onClick={onClose}
@@ -245,19 +245,22 @@ const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading, onClos
 
     return (
         <>
-            <h2 className="text-xl font-bold mb-4 text-gray-700 text-center">Payment Form</h2>
-            <form onSubmit={handleSubmit} className="mt-6">
+            <h2 className="text-xl font-bold mb-4 text-white text-center">Payment Form</h2>
+            <form 
+                onSubmit={handleSubmit} 
+                className="mt-6"
+            >
                 <div className="mb-4">
-                    <label className="text-gray-700">Card Number</label>
+                    <label className="text-white">Card Number</label>
                     <CardNumberElement className="p-4 bg-gray-100 rounded-lg mb-4" />
                 </div>
                 <div className="flex space-x-4">
                     <div className="w-1/2">
-                        <label className="text-gray-700">Expiry Date</label>
+                        <label className="text-white">Expiry Date</label>
                         <CardExpiryElement className="p-4 bg-gray-100 rounded-lg mb-4" />
                     </div>
                     <div className="w-1/2">
-                        <label className="text-gray-700">CVC</label>
+                        <label className="text-white">CVC</label>
                         <CardCvcElement className="p-4 bg-gray-100 rounded-lg mb-4" />
                     </div>
                 </div>
