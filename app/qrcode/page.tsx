@@ -7,6 +7,8 @@ import { CardCvcElement, CardExpiryElement, CardNumberElement, Elements, useElem
 import { X } from 'lucide-react';
 import TicketCard from './_components/TicketCard';
 
+import { motion } from 'framer-motion'; // Import motion from framer-motion
+
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 interface Ticket {
@@ -51,6 +53,17 @@ const TicketPage = () => {
         }
     };
 
+    // Define the variants for staggering the animations
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        show: { opacity: 1, transition: { staggerChildren: 0.3 } },
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 150 },  // Initial state: 20 pixels down and fully transparent
+        show: { opacity: 1, y: 0 },      // Final state: back to original position and fully opaque
+    };
+
     return (
         <div className="min-h-screen bg-gray-900 py-10 px-5">
             <div className="text-center mb-12">
@@ -62,26 +75,38 @@ const TicketPage = () => {
 
             <h1 className="text-4xl font-bold text-center mb-8 text-white">Generate a Ticket</h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <TicketCard
-                    hours={1}
-                    price={2}
-                    description="Valid for 1 hour from now."
-                    onClick={() => handleGenerateTicket(1)}
-                />
-                <TicketCard
-                    hours={24}
-                    price={35}
-                    description="Valid for 24 hours from now."
-                    onClick={() => handleGenerateTicket(24)}
-                />
-                <TicketCard
-                    hours={48}
-                    price={50}
-                    description="Valid for 48 hours from now."
-                    onClick={() => handleGenerateTicket(48)}
-                />
-            </div>
+            {/* Motion Div for Ticket Cards */}
+            <motion.div 
+                className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+                variants={containerVariants}
+                initial="hidden" 
+                animate="show" 
+            >
+                <motion.div variants={cardVariants}>
+                    <TicketCard
+                        hours={1}
+                        price={2}
+                        description="Valid for 1 hour from now."
+                        onClick={() => handleGenerateTicket(1)}
+                    />
+                </motion.div>
+                <motion.div variants={cardVariants}>
+                    <TicketCard
+                        hours={24}
+                        price={35}
+                        description="Valid for 24 hours from now."
+                        onClick={() => handleGenerateTicket(24)}
+                    />
+                </motion.div>
+                <motion.div variants={cardVariants}>
+                    <TicketCard
+                        hours={48}
+                        price={50}
+                        description="Valid for 48 hours from now."
+                        onClick={() => handleGenerateTicket(48)}
+                    />
+                </motion.div>
+            </motion.div>
 
             {/* Show payment form when clientSecret is available */}
             {clientSecret && showModal && (
