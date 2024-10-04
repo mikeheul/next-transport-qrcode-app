@@ -1,7 +1,8 @@
 "use client";
 
-import { Trash2Icon } from 'lucide-react';
+import { CheckCircle, Ticket, Trash2Icon, XCircle } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 interface Ticket {
@@ -67,8 +68,29 @@ const TicketsPage = () => {
                                 <div className="mt-4">
                                     <Image src={ticket.qrCode} alt="QR Code" width={150} height={150} className="w-full h-40 object-contain" />
                                 </div>
-                                <div className={`mt-4 p-2 text-center text-white rounded ${valid ? 'bg-green-600' : 'bg-red-600'}`}>
-                                    <p>{valid ? 'Valid Ticket' : 'Invalid Ticket'}</p>
+                                <div className={`mt-4 p-4 text-center text-white rounded-lg flex flex-col items-center justify-center ${valid ? 'bg-gradient-to-r from-green-400 to-green-600' : 'bg-gradient-to-r from-red-400 to-red-600'}`}>
+                                    <div className="flex items-center gap-2">
+                                        {valid ? (
+                                            <>
+                                                <CheckCircle className="w-6 h-6 text-white" /> {/* Lucide CheckCircle Icon */}
+                                                <p className="font-semibold text-white">Valid Ticket</p>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <XCircle className="w-6 h-6 text-white" /> {/* Lucide XCircle Icon */}
+                                                <p className="font-semibold text-white">Invalid Ticket</p>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className='mt-5'>
+                                    <Link
+                                        href={`/ticket/${ticket.id}`}
+                                        className="flex items-center justify-center w-full py-3 text-center text-lg font-semibold text-white bg-blue-500 rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-blue-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        >
+                                            <Ticket size={20} className="mr-2" /> {/* Ticket Icon */}
+                                            View Ticket
+                                    </Link>
                                 </div>
                             </div>
                             <div className="bg-gray-600 px-6 py-4">
