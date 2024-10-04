@@ -244,29 +244,32 @@ const PaymentForm = ({ clientSecret, hours, setTicket, setPaymentLoading, onClos
     };
 
     return (
-        <form onSubmit={handleSubmit} className="mt-6">
-            <div className="mb-4">
-                <label className="text-gray-700">Card Number</label>
-                <CardNumberElement className="p-4 bg-gray-100 rounded-lg mb-4" />
-            </div>
-            <div className="flex space-x-4">
-                <div className="w-1/2">
-                    <label className="text-gray-700">Expiry Date</label>
-                    <CardExpiryElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+        <>
+            <h2 className="text-xl font-bold mb-4 text-gray-700 text-center">Payment Form</h2>
+            <form onSubmit={handleSubmit} className="mt-6">
+                <div className="mb-4">
+                    <label className="text-gray-700">Card Number</label>
+                    <CardNumberElement className="p-4 bg-gray-100 rounded-lg mb-4" />
                 </div>
-                <div className="w-1/2">
-                    <label className="text-gray-700">CVC</label>
-                    <CardCvcElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                <div className="flex space-x-4">
+                    <div className="w-1/2">
+                        <label className="text-gray-700">Expiry Date</label>
+                        <CardExpiryElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                    </div>
+                    <div className="w-1/2">
+                        <label className="text-gray-700">CVC</label>
+                        <CardCvcElement className="p-4 bg-gray-100 rounded-lg mb-4" />
+                    </div>
                 </div>
-            </div>
-            <button 
-                type="submit" 
-                className="bg-blue-600 text-white px-4 py-2 rounded" 
-                disabled={!stripe} 
-            >
-                Pay Now
-            </button>
-        </form>
+                <button 
+                    type="submit" 
+                    className="bg-blue-600 text-white px-4 py-2 rounded" 
+                    disabled={!stripe} 
+                >
+                    Pay Now
+                </button>
+            </form>
+        </>
     );
 };
 
