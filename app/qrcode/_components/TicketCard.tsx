@@ -20,10 +20,15 @@ const TicketCard = ({ hours, price, description, onClick }: TicketCardProps) => 
     return (
         <div
             onClick={onClick}
-            className={`bg-gradient-to-r ${gradientClass} text-white rounded-lg p-6 shadow-lg transition duration-300 hover:shadow-2xl cursor-pointer`}
+            className={`bg-gradient-to-r ${gradientClass} relative text-white rounded-lg px-12 py-16 shadow-lg transition duration-300 hover:shadow-2xl hover:scale-[102%] cursor-pointer`}
         >
-            <h3 className="text-xl font-semibold mb-2">{`${hours} Hour${hours !== 1 ? 's' : ''} - ${price} Euros`}</h3>
-            <p className="text-sm mb-4">{description}</p>
+            <h3 className="text-xl font-semibold">{`${price} Euros`}</h3>
+            <p className="text-sm">{description}</p>
+            <div className="absolute top-4 right-4 bg-white p-2 rounded-lg">
+                <p className="text-xs text-black text-center">
+                    {`${hours} H${hours !== 1 ? 'S' : ''}`}
+                </p>
+            </div>
         </div>
     )
 }

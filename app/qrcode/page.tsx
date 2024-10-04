@@ -171,9 +171,9 @@ const TicketPage = () => {
 const Modal = ({ children, onClose, hours }: { children: React.ReactNode, onClose: () => void, hours: number | null }) => {
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="relative bg-white/70 backdrop-blur-lg rounded-lg border border-white/20 shadow-lg max-w-md w-full p-8">
+            <div className="relative bg-slate-900/40 backdrop-blur-lg rounded-lg border border-white/20 shadow-lg max-w-md w-full p-8">
                 <button
-                    className="absolute top-3 right-3 text-black"
+                    className="absolute top-3 right-3 text-white"
                     onClick={onClose}
                 >
                     <X size={20} />
